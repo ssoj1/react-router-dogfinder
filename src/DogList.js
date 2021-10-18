@@ -31,4 +31,6 @@ function DogList({ dogs }) {
   );
 }
 
+// To Do: change UUID generation to somewhere else
+
 export default DogList;

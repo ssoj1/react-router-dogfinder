@@ -16,7 +16,7 @@ function DogDetails({ dogs }) {
 
     const { name } = useParams();
 
-    const dog = dogs.find(dog => dog.name.toLowerCase() === name )
+    const dog = dogs.find(dog => dog.name.toLowerCase() === name );
 
     return (
         <div>
@@ -27,7 +27,7 @@ function DogDetails({ dogs }) {
             </ul>
             <img src={`/${dog.src}.jpg`} alt={name} />
         </div>
-    )
+    );
 
 };
 

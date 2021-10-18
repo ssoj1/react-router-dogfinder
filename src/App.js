@@ -14,24 +14,24 @@ import Routes from "./Routes";
  * State: 
  * - dogs - an array of objects with dog info like:
  * [{name, age, src, facts}, ...]
- * - isLoading - boolean
+ * - needsToLoad - boolean
  * 
  * App -> { Nav, Routes }
  */
 function App() {
   const [dogs, setDogs] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  console.log("APP", dogs, isLoading);
+  const [needsToLoad, setNeedsToLoad] = useState(true);
+  console.log("APP", dogs, needsToLoad);
   
   /** makes a GET request for dog data*/
   async function getDogs() {
-    let response = await axios({ url: "http://localhost:5000/dogs" });
+    const response = await axios({ url: "http://localhost:5000/dogs" });
     setDogs(response.data);
   }
 
   if (!dogs) {
-    if (isLoading) {
-      setIsLoading(false);
+    if (needsToLoad) {
+      setNeedsToLoad(false);
       getDogs();
     }
     return <p>Loading...</p>;

@@ -25,5 +25,6 @@ function Nav( { names } ) {
       </nav>
     );
 }
+// To Do: Change where UUID is created - can't be in map
 
 export default Nav;
