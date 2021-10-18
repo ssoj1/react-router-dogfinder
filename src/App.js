@@ -9,15 +9,25 @@ import axios from "axios";
 
 /**  */
 function App() {
-  const [dogs, setDogs] = useState(getDogs);
-  const [names, setNames] = useState([]);
-
+  const [dogs, setDogs] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  console.log("APP", dogs, isLoading);
   /**  */
   async function getDogs() {
     let response = await axios({ url: "http://localhost:5000/dogs" });
     setDogs(response.data);
-    setNames(response.data.map((dog) => dog.name));
   }
+
+  if (!dogs) {
+    if (isLoading) {
+      setIsLoading(false);
+      getDogs();
+    }
+    return <p>Loading...</p>;
+  }
+
+  const names = dogs.map((dog) => dog.name);
+  console.log(dogs, "why is this not working?");
 
   return (
     <div className="App">
