@@ -1,4 +1,4 @@
-import { v4 as uuid } from "uuid";
+
 import { Link } from "react-router-dom";
 
 /** Component for rendering all dogs
@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
  * Routes -> DogList
  */
 function DogList({ dogs }) {
-  console.log("dogs are great", dogs);
+  console.log("DogList", dogs);
 
   return (
     <div>
@@ -35,7 +35,5 @@ function DogList({ dogs }) {
     </div>
   );
 }
-
-// To Do: change UUID generation to somewhere else
 
 export default DogList;

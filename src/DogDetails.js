@@ -15,6 +15,7 @@ function DogDetails({ dogs }) {
     console.log("DogDetails", dogs);
 
     const { name } = useParams();
+    console.log("name is ", name)
 
     const dog = dogs.find(dog => dog.name.toLowerCase() === name );
 

@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import { v4 as uuid } from "uuid";
 
 /** Component for navigating
  *
@@ -25,6 +24,5 @@ function Nav({ names }) {
     </nav>
   );
 }
-// To Do: Change where UUID is created - can't be in map
 
 export default Nav;
