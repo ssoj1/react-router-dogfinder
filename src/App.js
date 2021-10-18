@@ -1,18 +1,29 @@
 import React, { useState } from "react";
 import "./App.css";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import Nav from "./Nav";
-import DogList from "./DogList";
-import DogDetails from "./DogDetails";
 import axios from "axios";
+import Routes from "./Routes";
 
-/**  */
+/** App for displaying dogs and info
+ * 
+ * Props: 
+ * - none
+ * 
+ * State: 
+ * - dogs - an array of objects with dog info like:
+ * [{name, age, src, facts}, ...]
+ * - isLoading - boolean
+ * 
+ * App -> { Nav, Routes }
+ */
 function App() {
   const [dogs, setDogs] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   console.log("APP", dogs, isLoading);
-  /**  */
+  
+  /** makes a GET request for dog data*/
   async function getDogs() {
     let response = await axios({ url: "http://localhost:5000/dogs" });
     setDogs(response.data);
@@ -27,21 +38,12 @@ function App() {
   }
 
   const names = dogs.map((dog) => dog.name);
-  console.log(dogs, "why is this not working?");
 
   return (
     <div className="App">
       <BrowserRouter>
         <Nav names={names} />
-        <Switch>
-          <Route exact path="/dogs">
-            <DogList dogs={dogs} />
-          </Route>
-          <Route exact path="/dogs/:name">
-            <DogDetails />
-          </Route>
-          <Redirect to="/dogs" />
-        </Switch>
+        <Routes dogs={dogs} />
       </BrowserRouter>
     </div>
   );
