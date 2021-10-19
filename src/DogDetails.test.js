@@ -12,27 +12,15 @@ const TEST_DATA = [
     { name: "Testdog2", age: 6, src: "testdog2", facts: [2, 3, 4] },
 ];
 
-// it("renders details of a dog", function () {
 
-//     const { debug, getByText } = render(
-//         <MemoryRouter initialEntries={["/dogs/testdog"]}>
-//         <DogDetails dogs={TEST_DATA} />
-//       </MemoryRouter>
-//     );
-    
-//     const h2Text = getByText("Testdog");
-//     expect(h2Text).toBeInTheDocument();
-//   });
-
-  it('mounts without crashing', function() {
+it('mounts without crashing', function() {
     const { getByText } = render(
-      <MemoryRouter>
+        <MemoryRouter>
         <DogDetails dogs={TEST_DATA} />
-      </MemoryRouter>
+        </MemoryRouter>
     );
-  
 
     const name = getByText("Testdog");
     expect(name).toBeInTheDocument();
 
-  });
+});
